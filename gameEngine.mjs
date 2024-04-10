@@ -5,10 +5,6 @@ import * as Utils from "./barneprat/utils.mjs";
 //#endregion
 
 
-let i = new Blocks.Image("/resources/demo/flower.png");
-
-Actions.Drag(i);
-
 let spill = null
 
 try {

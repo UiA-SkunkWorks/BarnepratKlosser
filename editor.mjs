@@ -27,7 +27,6 @@ if (project.items.length > 0) {
 }
 
 
-
 ToolBoxHandler.onToolboxItemCreated = (item) => {
     project.items.push(item);
     displayItem(item);
