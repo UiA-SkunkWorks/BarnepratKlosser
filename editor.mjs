@@ -9,11 +9,24 @@ import * as sourceView from "./editor/sourceview.mjs";
 
 const workArea = document.getElementById("workArea");
 
+const newProjectBT = document.getElementById("newProjectBT");
+
+newProjectBT.onclick = (e) => {
+
+    if (confirm("Dette vil slette alt arbeidet ditt, ønsker å gjøre dette?")) {
+        project = { items: [] };
+        IO.save(project, STORAGE_KEY);
+        workArea.innerHTML = "";
+    }
+}
+
 let project = IO.retrive(STORAGE_KEY) || { items: [] };
 
 if (project.items.length > 0) {
     restoreProject(project);
 }
+
+
 
 ToolBoxHandler.onToolboxItemCreated = (item) => {
     project.items.push(item);
@@ -48,6 +61,17 @@ function displayItem(item) {
     view.querySelector('button[data-action="delete"]').onclick = () => {
         deleteItem(item);
     }
+
+    view.querySelectorAll("[data-label]").forEach(el => {
+        el.onchange = (e) => {
+            let attribute = e.target.getAttribute("data-label");
+            item[attribute] = e.target.value;
+            IO.save(project, STORAGE_KEY);
+            sourceView.update(project.items);
+        };
+    });
+
+
 }
 
 function deleteItem(item) {
