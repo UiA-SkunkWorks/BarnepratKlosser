@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap');
+
+.gluten-100 {
+    font-family: "Gluten", cursive;
+    font-optical-sizing: auto;
+    font-size: 5em;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+}
+
+.red {
+    color: red;
+}

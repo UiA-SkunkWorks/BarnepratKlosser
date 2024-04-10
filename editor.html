@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barneprat Klosser Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg/icons/icons.css" rel="stylesheet" />
+    <link href="legocolors.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        workArea {
+            display: flex;
+            height: 100vh;
+        }
+
+        .s {
+            width: 25px;
+        }
+
+        .m {
+            width: 50px;
+        }
+
+        #toolBox {
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            width: 100%;
+            height: calc(100% - 10rem);
+            overflow: hidden;
+        }
+
+        #toolBox div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3vw;
+            height: 3vw;
+            flex: 1 0 auto;
+            border-radius: 15px;
+        }
+    </style>
+
+    <main>
+        <section id="toolBox">
+            <div id="addImageBt" class="lego-green" title="Legg til bilde"><i class="gg-image"></i></div>
+            <div id="addTextBt" class="lego-bright-blue" title="Legg til Text"><i class="gg-format-text"></i></div>
+            <div id="addSoundBt" class="lego-orange" title="Legg til Lyd"><i class="gg-music"></i></div>
+            <div id="toggleSourceBt"><i class="gg-code-slash"></i></div>
+            <div id="exportSourceBt"><i class="gg-software-download"></i></div>
+        </section>
+
+
+        <section style="display: flex; flex-direction: row;">
+            <section id="workArea" style="display: flex; flex-direction: column; flex: 1;"></section>
+            <section id="source" style="flex: 1; background-color: lightslategrey; padding:20px" contenteditable="true"></section>
+        </section>
+
+
+    </main>
+
+    <template id="uiTemplateImage">
+        <div class="item lego-green" style="user-select:none ;flex: 1; padding: 20px; padding-left: 30px; box-sizing: border-box;border-radius: 18px;margin: 0px 10px 10px 0px;">
+            Bilde :
+            x: <input data-label="x" class="s">,
+            y: <input data-label="y" class="s">,
+            bredde: <input data-label="width" class="s">
+            høyde: <input data-label="height" class="s">
+            Fil: <input data-label="source" placeholder="bilder/navn.png">
+            <span style="right: 0px;">
+                <button data-action="delete"><span class="gg-trash"></span></button>
+            </span>
+        </div>
+    </template>
+    <template id="uiTemplateText">
+        <div class="item lego-bright-blue" style="user-select:none ;flex: 1; padding: 20px; padding-left: 30px; box-sizing: border-box; border-radius: 18px;margin: 0px 10px 10px 0px;">
+            Tekst :
+            Innhold: <input data-label="text">
+            x: <input data-label="x" class="s">,
+            y: <input data-label="y" class="s">,
+            bredde: <input data-label="width" class="s">
+            høyde: <input data-label="height" class="s">
+            <span style="right: 0px;">
+                <button data-action="delete"><span class="gg-trash"></span></button>
+            </span>
+        </div>
+    </template>
+    <template id="uiTemplateSound">
+        <div class="item lego-orange" style="user-select:none ;flex: 1; padding: 20px; padding-left: 30px; box-sizing: border-box; border-radius: 18px;margin: 0px 10px 10px 0px;">
+            Lyd :
+            Loop <input data-label="loop" class="s" type="checkbox">,
+            Auto <input data-label="auto" class="s" type="checkbox">,
+            Fil: <input data-label="source" placeholder="lyder/lyd.mp3">
+            <span style="right: 0px;">
+                <button data-action="delete"><span class="gg-trash"></span></button>
+            </span>
+        </div>
+    </template>
+
+
+    <script src="/editor.mjs" type="module"></script>
+</body>
+
+</html>
