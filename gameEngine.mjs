@@ -8,8 +8,9 @@ import * as Utils from "./barneprat/utils.mjs";
 let spill = null
 
 try {
-    spill = await import("spill.mjs")
+    spill = await import("./spill.mjs")
 } catch (error) {
     alert("Noe er feil");
     console.log(error);
 }
+

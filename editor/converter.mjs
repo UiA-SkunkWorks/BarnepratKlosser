@@ -11,8 +11,6 @@ function template(strings, ...keys) {
     };
 }
 
-
-
 const BLOCK_TYPES_TEMPLATE = {
     Image: template`\tconst ${"id"} = new Blocks.Image("${"source"}", {x:${"x"},y:${"y"},width:${"width"},height:${"height"}});`,
     CellAnimation: template`\tconst ${"id"} = new Blocks.CellAnimation("${"source"}", {x:${"x"},y:${"y"},width:${"width"},height:${"height"}, loop:${"loop"}, auto:${"auto"}});`,

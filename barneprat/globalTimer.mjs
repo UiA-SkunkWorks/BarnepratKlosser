@@ -25,7 +25,11 @@ const toggleGlobalPause = () => {
     isPaused = !isPaused;
 }
 
+const removeAll = () => {
+    listeners.clear();
+}
+
 const globalInterval = setInterval(onTick, TIME_DELTA);
 
-export { addListener, removeListener, toggleGlobalPause, TIME_DELTA }
+export { addListener, removeListener, toggleGlobalPause, removeAll, TIME_DELTA }
 
