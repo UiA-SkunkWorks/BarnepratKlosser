@@ -1,6 +1,10 @@
+import { addListener } from "./globalTimer.mjs";
+
 const Bound = (item, bounds, callback) => {
 
     const orgUpdate = item.update;
+
+    addListener(item);
 
     item.update = () => {
 

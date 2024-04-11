@@ -2,14 +2,9 @@ import * as IO from "./io.mjs"
 import { STORAGE_KEY } from "./constants.mjs"
 
 const sourceTogleButton = document.getElementById("toggleSourceBt");
-const sourceExportButton = document.getElementById("exportSourceBt");
 const sourceDisplay = document.getElementById("source");
 
-sourceExportButton.onclick = (ev) => {
-    let project = IO.retrive(STORAGE_KEY);
 
-    console.log(project);
-}
 
 sourceTogleButton.onclick = (ev) => {
     if (sourceDisplay.style.display === "none") {

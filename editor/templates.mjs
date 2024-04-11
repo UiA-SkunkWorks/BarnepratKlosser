@@ -1,5 +1,8 @@
+import { CellAnimation } from "../barneprat/blocks.mjs";
+
 const UI_TEMPLATS = {
     Image: "uiTemplateImage",
+    CellAnimation: "uiTemplateCellAnimation",
     Text: "uiTemplateText",
     Sound: "uiTemplateSound"
 }

@@ -14,8 +14,6 @@ const doesRectsOverlapp = (ra, rb) => {
 }
 
 
-
-
 const Colide = (a, b, callback) => {
 
     const collision = {

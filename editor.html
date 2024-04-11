@@ -56,12 +56,13 @@
 
     <main>
         <section id="toolBox">
-            <div id="addImageBt" class="lego-green" title="Legg til bilde"><i class="gg-image"></i></div>
-            <div id="addTextBt" class="lego-bright-blue" title="Legg til Text"><i class="gg-format-text"></i></div>
-            <div id="addSoundBt" class="lego-orange" title="Legg til Lyd"><i class="gg-music"></i></div>
-            <div id="toggleSourceBt"><i class="gg-code-slash"></i></div>
-            <div id="exportSourceBt"><i class="gg-software-download"></i></div>
-            <div id="newProjectBT"><i class="gg-file-add"></i></div>
+            <div id="addImageBt" class="lego-green" title="Legg til bilde">🖼️</div>
+            <div id="addAnimationBt" class="lego-dark-azure" title="Legg til bilde">🎬</div>
+            <div id="addTextBt" class="lego-bright-blue" title="Legg til Text">📝</div>
+            <div id="addSoundBt" class="lego-orange" title="Legg til Lyd">🔈</div>
+            <div id="toggleSourceBt">🛠️</div>
+            <div id="exportSourceBt">💾</div>
+            <div id="newProjectBT">🔥</div>
         </section>
 
 
@@ -87,10 +88,26 @@
             </span>
         </div>
     </template>
+    <template id="uiTemplateCellAnimation">
+        <div class="item lego-dark-azure" style="user-select:none ;flex: 1; padding: 20px; padding-left: 30px; box-sizing: border-box;border-radius: 18px;margin: 0px 10px 10px 0px;">
+            Bilde :
+            x: <input data-label="x" class="s">,
+            y: <input data-label="y" class="s">,
+            bredde: <input data-label="width" class="s">
+            høyde: <input data-label="height" class="s">
+            Filer: <input data-label="source" placeholder="navn.png, navn2.png, navn3.png">
+            Loop <input data-label="loop" class="s" type="checkbox">,
+            Auto <input data-label="auto" class="s" type="checkbox">,
+            <span style="right: 0px;">
+                <button data-action="delete"><span class="gg-trash"></span></button>
+            </span>
+        </div>
+    </template>
     <template id="uiTemplateText">
         <div class="item lego-bright-blue" style="user-select:none ;flex: 1; padding: 20px; padding-left: 30px; box-sizing: border-box; border-radius: 18px;margin: 0px 10px 10px 0px;">
             Tekst :
             Innhold: <input data-label="text">
+            Stil: <input data-label="style">
             x: <input data-label="x" class="s">,
             y: <input data-label="y" class="s">,
             bredde: <input data-label="width" class="s">

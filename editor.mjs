@@ -1,18 +1,37 @@
-import * as Blocks from "./barneprat/blocks.mjs";
-import * as Actions from "./barneprat/actions.mjs";
-import * as Utils from "./barneprat/utils.mjs";
 import { STORAGE_KEY } from "./editor/constants.mjs";
 import * as IO from "./editor/io.mjs"
 import { ToolBoxHandler } from "./editor/toolbox.mjs";
 import { cloneUITemplate } from "./editor/templates.mjs";
 import * as sourceView from "./editor/sourceview.mjs";
+import Converter from "./editor/converter.mjs";
 
 const workArea = document.getElementById("workArea");
-
 const newProjectBT = document.getElementById("newProjectBT");
+const sourceExportButton = document.getElementById("exportSourceBt");
+
+sourceExportButton.onclick = (ev) => {
+
+    const name = prompt("Hva skal denne spill biten hete?")
+    const project = IO.retrive(STORAGE_KEY);
+    const sourceCode = Converter(project, name);
+    download("export.mjs", sourceCode);
+
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
 
 newProjectBT.onclick = (e) => {
-
     if (confirm("Dette vil slette alt arbeidet ditt, ønsker å gjøre dette?")) {
         project = { items: [] };
         IO.save(project, STORAGE_KEY);
@@ -25,7 +44,6 @@ let project = IO.retrive(STORAGE_KEY) || { items: [] };
 if (project.items.length > 0) {
     restoreProject(project);
 }
-
 
 ToolBoxHandler.onToolboxItemCreated = (item) => {
     project.items.push(item);
@@ -62,9 +80,16 @@ function displayItem(item) {
     }
 
     view.querySelectorAll("[data-label]").forEach(el => {
+
+        el.value = item[el.getAttribute("data-label")];
+
         el.onchange = (e) => {
             let attribute = e.target.getAttribute("data-label");
-            item[attribute] = e.target.value;
+            if (el.getAttribute("type") == "checkbox") {
+                item[attribute] = e.target.checked;
+            } else {
+                item[attribute] = e.target.value;
+            }
             IO.save(project, STORAGE_KEY);
             sourceView.update(project.items);
         };
