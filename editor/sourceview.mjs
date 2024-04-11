@@ -4,7 +4,11 @@ import { STORAGE_KEY } from "./constants.mjs"
 const sourceTogleButton = document.getElementById("toggleSourceBt");
 const sourceDisplay = document.getElementById("source");
 
+const sourcviewHidden = IO.retrive("SourceView") || true;
 
+if (sourcviewHidden) {
+    sourceDisplay.style.display = "none";
+}
 
 sourceTogleButton.onclick = (ev) => {
     if (sourceDisplay.style.display === "none") {
