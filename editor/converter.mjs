@@ -14,10 +14,10 @@ function template(strings, ...keys) {
 
 
 const BLOCK_TYPES_TEMPLATE = {
-    Image: template`\tconst ${"id"} = new Block.Image("${"source"}", {x:${"x"},y:${"y"},width:${"width"},height:${"height"}});`,
-    CellAnimation: template`\tconst ${"id"} = new Block.CellAnimation("${"source"}", {x:${"x"},y:${"y"},width:${"width"},height:${"height"}, loop:${"loop"}, auto:${"auto"}});`,
-    Sound: template`\tconst ${"id"} = new Block.Sound("${"source"}", {loop:${"loop"}, auto:${"auto"}});`,
-    Text: template`\tconst ${"id"} = new Block.Text("${"text"}", {style:"${"style"}", x:${"x"},y:${"y"},width:${"width"},height:${"height"});`,
+    Image: template`\tconst ${"id"} = new Blocks.Image("${"source"}", {x:${"x"},y:${"y"},width:${"width"},height:${"height"}});`,
+    CellAnimation: template`\tconst ${"id"} = new Blocks.CellAnimation("${"source"}", {x:${"x"},y:${"y"},width:${"width"},height:${"height"}, loop:${"loop"}, auto:${"auto"}});`,
+    Sound: template`\tconst ${"id"} = new Blocks.Sound("${"source"}", {loop:${"loop"}, auto:${"auto"}});`,
+    Text: template`\tconst ${"id"} = new Blocks.Text("${"text"}", {style:"${"style"}", x:${"x"},y:${"y"},width:${"width"},height:${"height"}});`,
 }
 
 const Converter = (project, name) => {
