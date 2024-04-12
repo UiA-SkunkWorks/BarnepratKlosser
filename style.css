@@ -8,7 +8,13 @@
     font-style: normal;
     font-variation-settings: "slnt" 0;
 }
-
+.headingText {
+    font-family:'Courier New', Courier, monospace;
+    font-optical-sizing: auto;
+    font-size: 0.5em;
+    font-weight: normal;
+    font-style: normal;
+}
 .overskrift {
     color: red;
 }
