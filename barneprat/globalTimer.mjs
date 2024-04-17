@@ -3,14 +3,23 @@ const FPS = 30;
 const TIME_DELTA = 1000 / FPS;
 
 const listeners = new Set();
+const persistentListeners = new Set();
+
 let isPaused = false;
 
 const onTick = () => {
     if (!isPaused) {
+        persistentListeners.forEach(listener => {
+            listener["update"]();
+        });
         listeners.forEach(listener => {
             listener["update"]();
-        })
+        });
     }
+}
+
+const addPersistentListener = (listener) => {
+    persistentListeners.add(listener);
 }
 
 const addListener = (listener) => {
@@ -31,5 +40,5 @@ const removeAll = () => {
 
 const globalInterval = setInterval(onTick, TIME_DELTA);
 
-export { addListener, removeListener, toggleGlobalPause, removeAll, TIME_DELTA }
+export { addListener, removeListener, toggleGlobalPause, removeAll, TIME_DELTA, addPersistentListener }
 

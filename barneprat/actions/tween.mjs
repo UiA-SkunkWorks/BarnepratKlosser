@@ -18,7 +18,7 @@ const TweenManager = {
 }
 
 
-GlobalTimer.addListener(TweenManager);
+GlobalTimer.addPersistentListener(TweenManager);
 
 
 const Tween = (item, dx, dy) => {
