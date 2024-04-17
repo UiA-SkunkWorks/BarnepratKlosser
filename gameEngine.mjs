@@ -5,6 +5,8 @@ import * as Utils from "./barneprat/utils.mjs";
 //#endregion
 
 
+await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+
 let spill = null
 
 try {
