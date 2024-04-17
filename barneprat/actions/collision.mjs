@@ -32,4 +32,30 @@ const Colide = (a, b, callback) => {
     return collision;
 }
 
-export default Colide 
+const Snap = (a, b, snapOffset) => {
+    const snap = {
+        a, b, snapOffset,
+        update: () => {
+            Colide(a, b, () => {
+                let rectA = a.target.getBoundingClientRect();
+                let centerX_A = rectA.left + rectA.width / 2;
+                let centerY_A = rectA.top + rectA.height / 2;
+        
+                let rectB = b.target.getBoundingClientRect();
+                
+                let leftB = centerX_A - rectB.width / 2;
+                let topB = centerY_A - rectB.height / 2;
+        
+                b.target.style.left = leftB + "px";
+                b.target.style.top = topB + "px";
+            });
+        }
+    };
+
+    addListener(snap);
+    return snap;
+};
+
+
+
+export { Colide, Snap };

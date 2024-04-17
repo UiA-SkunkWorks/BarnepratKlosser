@@ -6,7 +6,7 @@ let shiftY = 0;
 
 const dropTargets = []
 
-window.document.onmousemove = (e) => {
+const onMovement = (e) => {
     if (dragTarget) {
         dragTarget.style.left = (e.pageX - shiftX) + "px";
         dragTarget.style.top = (e.pageY - shiftY) + "px";
@@ -15,7 +15,10 @@ window.document.onmousemove = (e) => {
     }
 }
 
-window.document.onmouseup = (e) => {
+window.document.ontouchmove = onMovement;
+window.document.onmousemove = onMovement;
+
+const endMovment = (e) => {
 
     if (!dragTarget) { return }
 
@@ -39,8 +42,20 @@ window.document.onmouseup = (e) => {
     dragItem = null;
 }
 
+window.document.onmouseup = endMovment;
+window.document.touchend = endMovment;
 
 const Drag = (item, label = "dragDefault") => {
+
+
+    item.target.ontouchstart = (e) => {
+        dragItem = item;
+        dragTarget = item.target;
+        dragTarget.setAttribute("data-drag", label);
+        item.target.style.zIndex = 9999;
+        shiftX = e.clientX - item.target.getBoundingClientRect().left;
+        shiftY = e.clientY - item.target.getBoundingClientRect().top;
+    }
 
     item.target.onmousedown = (e) => {
         dragItem = item;
