@@ -7,5 +7,13 @@ function positionElement(element, settings) {
 
 }
 
+function isRuningOnTouchDevice() {
+    return "ontouchend" in window.document;
+}
 
-export { positionElement }
+function randomString() {
+    return (Math.random() + 1).toString(36).substring(7);
+}
+
+
+export { positionElement, isRuningOnTouchDevice, randomString }

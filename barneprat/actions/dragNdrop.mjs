@@ -1,3 +1,4 @@
+import { isRuningOnTouchDevice, randomString } from "../utils/utils.mjs"
 
 let dragTarget = null;
 let dragItem = null;
@@ -5,6 +6,36 @@ let shiftX = 0;
 let shiftY = 0;
 
 const dropTargets = []
+
+function touchStart(e) {
+    e.preventDefault();
+
+    let target = e.target;
+    console.log(target);
+
+    let dragId = target.getAttribute("data-drag-id");
+    if (dragId == undefined) { return }
+
+    const touch = e.touches[0];
+    const moveOffsetX = target.offsetLeft - touch.pageX;
+    const moveOffsetY = target.offsetTop - touch.pageY;
+
+    target.addEventListener("touchmove", touchMove, { passive: false });
+
+    function touchMove(e) {
+        const touch = e.touches[0];
+        const positionX = touch.pageX + moveOffsetX;
+        const positionY = touch.pageY + moveOffsetY;
+
+        target.style.left = `${positionX}px`;
+        target.style.top = `${positionY}px`;
+    }
+}
+
+if (isRuningOnTouchDevice()) {
+    document.body.addEventListener('touchstart', touchStart, { passive: false });
+}
+
 
 const onMovement = (e) => {
     if (dragTarget) {
@@ -14,9 +45,6 @@ const onMovement = (e) => {
         dragItem.y = e.pageY - shiftY;
     }
 }
-
-window.document.ontouchmove = onMovement;
-window.document.onmousemove = onMovement;
 
 const endMovment = (e) => {
 
@@ -34,7 +62,6 @@ const endMovment = (e) => {
             dropTarget = dropTarget[0];
             dropTarget.callback(dragItem);
         }
-
     }
 
 
@@ -43,19 +70,14 @@ const endMovment = (e) => {
 }
 
 window.document.onmouseup = endMovment;
-window.document.touchend = endMovment;
+window.document.onmousemove = onMovement;
 
 const Drag = (item, label = "dragDefault") => {
 
+    item.dragId = randomString();
+    item.target.setAttribute("data-drag-id", item.dragId);
 
-    item.target.ontouchstart = (e) => {
-        dragItem = item;
-        dragTarget = item.target;
-        dragTarget.setAttribute("data-drag", label);
-        item.target.style.zIndex = 9999;
-        shiftX = e.clientX - item.target.getBoundingClientRect().left;
-        shiftY = e.clientY - item.target.getBoundingClientRect().top;
-    }
+
 
     item.target.onmousedown = (e) => {
         dragItem = item;
