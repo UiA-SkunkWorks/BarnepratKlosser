@@ -19,7 +19,10 @@ const Start = (maal) => {
     }
 }
 
-Start(Demo);
+Demo();
+
+const output = window.document.getElementById("output");
+
 
 function Demo() {
 
@@ -33,6 +36,7 @@ function Demo() {
 
 const dragndrop = () => {
 
+    output.innerHTML = output.innerHTML + "<br/>" + "D&D initalized"
     let myX;
     let myY;
     let target;
@@ -41,9 +45,10 @@ const dragndrop = () => {
         e.preventDefault();
 
         target = e.target;
+        console.log(target);
         const touch = e.touches[0];
-        const moveOffsetX = whichArt.offsetLeft - touch.pageX;
-        const moveOffsetY = whichArt.offsetTop - touch.pageY;
+        const moveOffsetX = target.offsetLeft - touch.pageX;
+        const moveOffsetY = target.offsetTop - touch.pageY;
 
         target.addEventListener("touchmove", touchMove, { passive: false });
 
