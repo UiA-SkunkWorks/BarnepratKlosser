@@ -28,7 +28,14 @@ function Demo() {
 
     const flower = new Blocks.Image("resources/demo/flower.png", { x: 0, y: 0, width: 100, height: 100 });
     const basket = new Blocks.Image("resources/demo/basket.png", { x: 200, y: 0, width: 100, height: 100 });
+
+
     Actions.Drag(flower);
+
+    Actions.Click(basket, () => {
+        alert("woho");
+    })
+
 
 
 

@@ -8,7 +8,7 @@ let shiftY = 0;
 const dropTargets = []
 
 function touchStart(e) {
-    e.preventDefault();
+    //e.preventDefault(); // This makes the click events stop working.
 
     let target = e.target;
     console.log(target);
@@ -76,8 +76,6 @@ const Drag = (item, label = "dragDefault") => {
 
     item.dragId = randomString();
     item.target.setAttribute("data-drag-id", item.dragId);
-
-
 
     item.target.onmousedown = (e) => {
         dragItem = item;
