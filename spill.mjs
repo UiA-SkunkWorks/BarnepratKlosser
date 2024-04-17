@@ -7,7 +7,7 @@ import { removeAll } from "./barneprat/globalTimer.mjs";
 
 const GaaTil = (maal) => {
     document.body.innerHTML = "";
-    removeAll();
+    //removeAll();
     maal();
 }
 
@@ -21,7 +21,7 @@ const Start = (maal) => {
 }
 //#endregion
 
-Start(puzzle);
+Start(home);
 
 // Disse scenene er her som eksempler. Du kan ta dem bort eller endre dem. 
 
@@ -83,20 +83,17 @@ function home()
 // Å gjøre: Gi bedre navn til alle tingene.
 
 	const gameBoard = new Blocks.Image("bilder/brett.png", {x:0,y:0,width:1400,height:700});
-	const square1 = new Blocks.Image("bilder/square.png", {x:330,y:0,width:200,height:200});
-	const triangle1 = new Blocks.Image("bilder/triangle.png", {x:0,y:0,width:100,height:100});
-	const sircle = new Blocks.Image("bilder/sircle.png", {x:0,y:100,width:100,height:100});
-	const square2 = new Blocks.Image("bilder/square.png", {x:0,y:150,width:100,height:100});
 	const triangle2 = new Blocks.Image("bilder/triangle.png", {x:0,y:50,width:100,height:100});
     const diamond = new Blocks.Image("bilder/diamond.png", {x:38,y:230,width:200,height:200});
 	const sound16 = new Blocks.Sound("lyd/sound.m4a", {loop:false, auto:false});
     Actions.Click(diamond, () => {
         GaaTil(puzzle)
     })
+    Actions.Tween(triangle2,2,0)
 }
 function puzzle()
 {
-   
+   alert("Test")
 // Å gjøre: Gi bedre navn til alle tingene.
 /*
     let place1 = false;
@@ -126,7 +123,7 @@ function puzzle()
 */
     const bird = new Blocks.Image("bilder/drage1.jpg", {x:500,y:660,width:450,height:550});
     Actions.Click(bird, ()=>{
-       
+        bird = new Blocks.Image("bilder/drage4.jpg", {x:500,y:660,width:450,height:550});
         //if (place1 && place2 && place3 && place4) {
             alert("Well done!");
         //}
