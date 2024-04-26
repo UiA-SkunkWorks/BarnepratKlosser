@@ -1,4 +1,4 @@
-import { addListener } from "./globalTimer.mjs";
+import { addListener } from "./globalTidTaker.mjs";
 
 const Bound = (item, bounds, callback) => {
 
