@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-zip": "^6.0.0",
+    "del": "^7.1.0"
+  }
+}
