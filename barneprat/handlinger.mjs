@@ -7,4 +7,4 @@ import { Colide, Snap } from './actions/collision.mjs';
 
 
 
-export { CountDown, Click, Drag, Drop, Tween, Colide, Snap }
+export { CountDown as NedTelling, Click as TrykkPaa, Drag as Dra, Drop as Slipp, Tween as Beveg, Colide as Kolisjon, Snap as Snapp }

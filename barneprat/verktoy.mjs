@@ -32,7 +32,6 @@ const Bound = (item, bounds, callback) => {
         if (boundsViolation) {
             callback(item);
         }
-
     }
 }
 
@@ -40,4 +39,4 @@ const Bounds = (left, top, right, bottom) => {
     return { left, top, right, bottom }
 }
 
-export { Bound, Bounds }
+export { Bound as BindTil, Bounds as Grenser }

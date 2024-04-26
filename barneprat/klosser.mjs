@@ -6,4 +6,4 @@ import CellAnimation from "./blocks/cellAnimation.mjs";
 import Text from "./blocks/text.mjs";
 
 
-export { Image, Button, Sound, CellAnimation, Text };
+export { Image as Bilde, Button as Knapp, Sound as Lyd, CellAnimation as Animasjon, Text as Tekst };
