@@ -27,7 +27,8 @@ class Sound extends BaseBlock {
     }
 
     stop() {
-        this.audio.stop();
+        this.audio.pause();
+        this.audio.currentTime = 0;
         this.isPlaying = false;
     }
 }
