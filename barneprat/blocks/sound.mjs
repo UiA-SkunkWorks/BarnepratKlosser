@@ -2,8 +2,9 @@ import BaseBlock from "./baseBlock.mjs";
 
 class Sound extends BaseBlock {
 
-    constructor(source, settings = { loop: false, auto: false }) {
+    constructor(source, settings = { loop: false, auto: false, volume:1 }) {
         super();
+        this.volume = settings.volume;
         this.source = source;
         this.loop = settings.loop;
         this.auto = settings.auto;
@@ -12,6 +13,7 @@ class Sound extends BaseBlock {
         this.audio = new Audio(this.source);
         this.audio.loop = this.loop;
         this.audio.autoplay = this.auto;
+        this.audio.volume = this.volume;
         this.target = this.audio;
     }
 
@@ -27,7 +29,8 @@ class Sound extends BaseBlock {
     }
 
     stop() {
-        this.audio.stop();
+        this.audio.pause();
+        this.audio.currentTime = 0;
         this.isPlaying = false;
     }
 }
